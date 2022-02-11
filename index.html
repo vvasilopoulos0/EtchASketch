@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="button-container">
+        <button type="submit" id="buttonSize">Grid Size</button>
+        <button type="submit" id="buttonRandom">Multiple Colors</button>
+        <button type="submit" id = "buttonClear">Clear</button>
+    </div>
+    <div id = "grid">
+
+    </div>
+
+    <script>
+        let flag = 0; /*this variable shows us whether the single or multiple color mode is on */
+        let gridSize = prompt("Enter the grid size:");
+        if ((gridSize < 10) || (gridSize > 50)){
+            gridSize = correctGridSize();
+        }
+
+        document.getElementById("buttonSize").addEventListener('click',function(){
+            gridSize = prompt("Enter the grid size:");
+            if ((gridSize < 10) || (gridSize > 50)){
+                gridSize = correctGridSize();
+            } 
+            createGrid(gridSize,flag);
+        })
+
+        document.getElementById("buttonClear").addEventListener('click',function(){
+            clearGrid(gridSize);
+        })
+
+        document.getElementById("buttonRandom").addEventListener('click',function(){
+            let flag = flagChecker();
+            console.log(flag);
+            if (flag == 0){
+                clearGrid(gridSize);
+                gridRandomColor();
+            }
+            else{
+                clearGrid(gridSize);
+                gridSingleColor();
+            }
+            
+        })
+
+        for (i=0; i < gridSize*gridSize; i++){
+            let height = (100/gridSize);
+            let width = (100/gridSize);
+            var div = document.createElement("div");
+            div.id = "square";
+            div.className = "blocks";
+            div.style.width = "calc(" + height + " * 1% )";
+            div.style.height = "calc(" + width +" * 1% )";
+            document.getElementById("grid").appendChild(div);
+            
+            div.addEventListener("mouseover", function(){
+                this.style.backgroundColor = "black";
+            })
+
+        }
+
+        function randomColor(){
+            let rand = Math.random();
+            if (rand < 0.1){
+                color = "red"
+            }
+            else if (rand < 0.2){
+                color = "blue"
+            }
+            else if (rand < 0.3){
+                color = "black"
+            }
+            else if (rand < 0.4){
+                color = "pink"
+            }
+            else if (rand < 0.5){
+                color = "brown"
+            }
+            else if (rand < 0.6){
+                color = "green"
+            }
+            else if (rand < 0.7){
+                color = "purple"
+            }
+            else if (rand < 0.8){
+                color = "yellow"
+            }
+            else if (rand < 0.9){
+                color = "gray"
+            }
+            return color;
+        }
+
+        /* function that prompts the user to enter a valid grid size. Called when the original size is invalid. */
+
+        function correctGridSize(){
+            let size = prompt("Enter a valid size ( Number between 10 and 50)");
+            while ((size < 10) || (size > 50)){
+                size = prompt("Enter a valid size ( Number between 10 and 50)");
+            }
+            if ((size >= 10) & (size <= 50)){
+                return size;
+            }
+            
+        }
+
+        /* function that clears  the grid */
+
+        function clearGrid(gridSize){
+            blockCollection = document.getElementsByClassName('blocks');
+            for (let i =0; i < gridSize*gridSize; i++){
+                blockCollection[i].style.backgroundColor = "white";
+            }
+        }
+
+        function createGrid(gridSize,flag){
+
+            document.getElementById("grid").innerHTML = "";
+
+            for (i=0; i < gridSize*gridSize; i++){
+                let height = (100/gridSize);
+                let width = (100/gridSize);
+                var div = document.createElement("div");
+                div.id = "square";
+                div.className = "blocks";
+                div.style.width = "calc(" + height + " * 1% )";
+                div.style.height = "calc(" + width +" * 1% )";
+                document.getElementById("grid").appendChild(div);  
+            }
+            document.getElementById("buttonRandom").innerHTML = "Multiple Colors";
+
+            blockCollection = document.getElementsByClassName('blocks');
+            for (let i =0; i < gridSize*gridSize; i++){
+                blockCollection[i].addEventListener("mouseover", function(){
+                    blockCollection[i].style.backgroundColor = "black";
+                })
+            }
+        }
+
+        /* function that adds event listener to grids to generate a random color (of our 10 colors) on mouseover */
+
+        function gridRandomColor(){
+            blockCollection = document.getElementsByClassName('blocks');
+            for (let i =0; i < gridSize*gridSize; i++){
+                blockCollection[i].addEventListener("mouseover", function(){
+                    blockCollection[i].style.backgroundColor = randomColor();
+                })
+            }
+            document.getElementById('buttonRandom').innerHTML = "Single Color";
+        }
+
+        /* function that adds event listener to grids to generate a single color on mouseover */
+
+        function gridSingleColor(){
+            blockCollection = document.getElementsByClassName('blocks');
+            for (let i =0; i < gridSize*gridSize; i++){
+                blockCollection[i].addEventListener("mouseover", function(){
+                    blockCollection[i].style.backgroundColor = "black";
+                })
+            }
+            document.getElementById('buttonRandom').innerHTML = "Multiple Colors";
+        }
+
+        /*function that sets flag = 0 if we want to use multiple colors and 1 if we want to use single */
+
+        function flagChecker(){
+            if (document.getElementById('buttonRandom').innerHTML == "Multiple Colors"){
+                let flag = 0;
+                return flag;
+            }
+            else{
+                let flag = 1;
+                return flag;
+            }
+            
+        }
+        
+        
+    </script>
+</body>
+</html>
