@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: calc(50px + 5vw);
-    background-color: black;
+    background-color: rgb(53, 50, 50);
 }
 
 .button-container{
@@ -24,18 +24,16 @@ body{
     width: max(50px, 15vw);
     height: max(50px, 10vh);
     font-size: calc(8px + 1vw);
+    background-color: green;
 }
 
 #grid{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 50%;
-    width: 30%;
-    background-color: white;
+    height: 70%;
+    width: 25%;
     
+    background-color: white;
 }
 
-#square{
-   background-color: white;
-}

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "style.css">
+    <script src= "etchSketch.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -38,7 +39,6 @@
 
         document.getElementById("buttonRandom").addEventListener('click',function(){
             let flag = flagChecker();
-            console.log(flag);
             if (flag == 0){
                 clearGrid(gridSize);
                 gridRandomColor();
@@ -47,7 +47,6 @@
                 clearGrid(gridSize);
                 gridSingleColor();
             }
-            
         })
 
         for (i=0; i < gridSize*gridSize; i++){
@@ -59,11 +58,10 @@
             div.style.width = "calc(" + height + " * 1% )";
             div.style.height = "calc(" + width +" * 1% )";
             document.getElementById("grid").appendChild(div);
-            
+
             div.addEventListener("mouseover", function(){
                 this.style.backgroundColor = "black";
             })
-
         }
 
         function randomColor(){
@@ -108,7 +106,7 @@
             if ((size >= 10) & (size <= 50)){
                 return size;
             }
-            
+
         }
 
         /* function that clears  the grid */
@@ -175,14 +173,12 @@
                 let flag = 0;
                 return flag;
             }
-            else{
-                let flag = 1;
-                return flag;
-            }
-            
+        else{
+            let flag = 1;
+            return flag;
         }
-        
-        
+
+        }
     </script>
 </body>
 </html>
