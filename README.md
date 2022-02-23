@@ -1,6 +1,6 @@
 <h1 align="center">EtchASketch</h1>
 
-Classic drawing game of EtchASketch. Various grid sizes can be chosen, aswell as a one-color mode(black) and a multi-color mode.
+<p align="center">Classic drawing game of EtchASketch. Various grid sizes can be chosen, aswell as a one-color mode(black) and a multi-color mode.</p>
 
 [EtchASketch](https://vvasilopoulos0.github.io/EtchASketch/)
 
