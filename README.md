@@ -1,6 +1,6 @@
 <h1 align="center">EtchASketch</h1>
 
-In this web page a basic layout is of a form is presented, where the user inputs some values, which get validated after. It does not involve any back-end work.
+Classic drawing game of EtchASketch. Various grid sizes can be chosen, aswell as a one-color mode(black) and a multi-color mode.
 
 [EtchASketch](https://vvasilopoulos0.github.io/EtchASketch/)
 
